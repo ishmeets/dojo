@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>User Interface</title>
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="Your description">
+		<meta name="keywords" content="Your,Keywords">
+		<meta name="author" content="ResponsiveWebInc">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Font awesome CSS -->
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">		
+		<!-- Custom CSS -->
+		<link href="css/style-30.css" rel="stylesheet">
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+	</head>
+	
+	<body>
+	
+				
+	
+		<br />
+		<h1 class="text-center">User Interface <span class="lblue">#30</span></h1>
+		<br />
+			
+				
+				<!-- UI thirty -->
+				<div class="ui-30">
+					<div class="container">
+						<!-- UI content -->
+						<div class="block-content">
+							<div class="triangle-container">
+								<div class="triangle-outer t-one">
+									<!-- Bar hover -->
+									<div class="bar-hover">
+										<!-- Heading -->
+										<h6>Report</h6>
+										<!-- Numbers with icon -->
+										<span class="num">60&#37; <i class="fa fa-arrow-up red"></i> &nbsp; 30&#37; <i class="fa fa-arrow-down green"></i></span>
+									</div>
+									<!-- Triangle inner block - which have triangle inside -->
+									<div class="triangle-inner">
+										<!-- This block have only border bottom -->
+										<div class="triangle triangle-red" data-limit="0"></div>
+									</div>
+									<!-- Scale bottom number -->
+									<span class="number">20unit</span>
+								</div>
+								<div class="triangle-outer t-two">
+									<!-- Bar hover -->
+									<div class="bar-hover">
+										<!-- Heading -->
+										<h6>Report</h6>
+										<!-- Numbers with icon -->
+										<span class="num">60&#37; <i class="fa fa-arrow-up red"></i> &nbsp; 30&#37; <i class="fa fa-arrow-down green"></i></span>
+									</div>
+									<!-- Triangle inner block - which have triangle inside -->
+									<div class="triangle-inner">
+										<div class="triangle triangle-green" data-limit="10"></div>
+									</div>
+									<!-- Scale bottom number -->
+									<span class="number">40unit</span>
+								</div>
+								<div class="triangle-outer t-three">
+									<!-- Bar hover -->
+									<div class="bar-hover">
+										<!-- Heading -->
+										<h6>Report</h6>
+										<!-- Numbers with icon -->
+										<span class="num">60&#37; <i class="fa fa-arrow-up red"></i> &nbsp; 30&#37; <i class="fa fa-arrow-down green"></i></span>
+									</div>
+									<!-- Triangle inner block - which have triangle inside -->
+									<div class="triangle-inner">
+										<div class="triangle triangle-lblue" data-limit="5"></div>
+									</div>
+									<!-- Scale bottom number -->
+									<span class="number">80unit</span>
+								</div>
+								<div class="triangle-outer t-four">
+									<!-- Bar hover -->
+									<div class="bar-hover">
+										<!-- Heading -->
+										<h6>Report</h6>
+										<!-- Numbers with icon -->
+										<span class="num">60&#37; <i class="fa fa-arrow-up red"></i> &nbsp; 30&#37; <i class="fa fa-arrow-down green"></i></span>
+									</div>
+									<!-- Triangle inner block - which have triangle inside -->
+									<div class="triangle-inner">
+										<div class="triangle triangle-orange" data-limit="2"></div>
+									</div>
+									<!-- Scale bottom number -->
+									<span class="number">100unit</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="co-ordinate"></div>
+						</div>
+					</div>
+				</div>
+				<!-- UI thirty end -->
+			
+		
+		
+		<!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="js/respond.min.js"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="js/html5shiv.js"></script>
+		<script>
+		$('.triangle').each(function(){
+			var $limit = $(this).attr('data-limit');
+			var $triangle = $(this);
+			if(!$triangle.hasClass("finish"))
+			{	
+				$triangle.animate({'top': $limit+'%' },1200);
+				$triangle.addClass('finish');
+			}
+		});
+		</script>
+	</body>	
+</html>
