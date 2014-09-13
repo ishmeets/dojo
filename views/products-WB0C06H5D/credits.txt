@@ -1,0 +1,37 @@
+**Credits:**
+
+- Bootstrap - http://getbootstrap.com
+- jQuery - http://jquery.com
+- HTML5Shiv - @afarkas @jdalton @jon_neal @rem
+- Respond - Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas.
+- Pattern - http://subtlepatterns.com/
+- Font awesome icon - http://fortawesome.github.io/Font-Awesome/
+- Photos - http://pixabay.com
+- Revolution slider - http://codecanyon.net/item/slider-revolution-responsive-jquery-plugin/2580848
+- Universal mega menu - http://codecanyon.net/item/universal-responsive-mega-menu/4984236
+- Smart forms - http://codecanyon.net/item/smart-forms/7254656
+- Animate.css - http://daneden.me/animate
+- Flexslider - http://www.woothemes.com/flexslider/
+- Magnific popup - http://dimsemenov.com/plugins/magnific-popup/
+- Owl carousel - http://owlgraphic.com/owlcarousel/
+- Parallax content slider - http://tympanus.net/codrops/2012/03/15/parallax-content-slider-with-css3-and-jquery/
+- Imageloaded - https://github.com/desandro/imagesloaded
+- Isotope - http://isotope.metafizzy.co/
+- Arbitrary anchor - http://briangonzalez.org/arbitrary-anchor
+- Countdown - http://github.com/hilios/jquery.countdown
+- Count To - https://github.com/mhuggins/jquery-countTo
+- Gmap - http://labs.mario.ec/jquery-gmap/
+- Knob - http://anthonyterrien.com/knob/
+- Masked Input - http://digitalbush.com/projects/masked-input-plugin
+- Spectrum - https://github.com/bgrins/spectrum
+- Stepper - https://github.com/benplum/Stepper
+- Sticky - http://labs.anthonygarand.com/sticky
+- Validate - http://jqueryvalidation.org/
+- jQuery UI - http://jqueryui.com/
+- Month picker - https://github.com/zorab47/jquery.ui.monthpicker
+- Time picker - http://trentrichardson.com/examples/timepicker
+- Masonry - http://masonry.desandro.com/
+- Modernizr - http://modernizr.com/
+- Placeholders - http://jamesallardice.github.io/Placeholders.js/
+- Waypoints - http://imakewebthings.com/jquery-waypoints/
+

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>User Interface</title>
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="Your description">
+		<meta name="keywords" content="Your,Keywords">
+		<meta name="author" content="ResponsiveWebInc">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap Date-Time Picker CSS -->
+		<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+		<!-- Font awesome CSS -->
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">		
+		<!-- Custom CSS -->
+		<link href="css/style-34.css" rel="stylesheet">
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+	</head>
+	
+	<body>
+	
+	
+		<br />
+		<h1 class="text-center">User Interface <span class="lblue">#34</span></h1>
+		<br />
+			
+	
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Add new task</h4>
+					</div>
+					<div class="modal-body">
+						<br>
+						<form role="form">
+							<div class="form-group">
+								<label for="title">Enter Task</label>
+								<input type="email" class="form-control" id="title" placeholder="Enter task">
+							</div>
+							<div class="form-group">
+								<label>Date Picker</label>
+								<!-- Date Picker -->
+								<div id="datetimepicker1" class="input-append input-group dtpicker">
+									<input data-format="yyyy-MM-dd, hh:mm:ss" type="text" class="form-control">
+									<span class="input-group-addon add-on">
+										<i data-time-icon="fa fa-times" data-date-icon="fa fa-calendar"></i>
+									</span>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+				
+				<!-- UI thirty four -->
+				<div class="ui-34">
+					<div class="container">
+						<!-- UI content -->
+						<div class="block-content">
+							<!-- Header -->
+							<div class="work-header text-center">
+								<div class="dropdown pull-left">
+									<a href="#" data-toggle="dropdown" class="btn btn-default btn-sm">Short by &nbsp;<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Date</a></li>
+										<li><a href="#">Name</a></li>
+										<li><a href="#">Type</a></li>
+									</ul>
+								</div>
+								<h2 class="pull-left">To Do List</h2>
+								<div class="add-task pull-right">
+									<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">Add New Task</button>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							
+							<div class="task-list">
+								<div class="paper-work">
+									<!-- Double red line -->
+									<div class="red-line"></div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 24, 14:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-info pull-right">Medium</span>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 23, 04:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-danger pull-right">Important</span>
+												<div class="clearfix"></div>
+											</div>								
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 20, 18:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-warning pull-right">Normal</span>
+												<div class="clearfix"></div>
+											</div>								
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 24, 14:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-info pull-right">Medium</span>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 23, 04:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-danger pull-right">Important</span>
+												<div class="clearfix"></div>
+											</div>								
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 20, 18:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-warning pull-right">Normal</span>
+												<div class="clearfix"></div>
+											</div>								
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 24, 14:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-info pull-right">Medium</span>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 23, 04:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-danger pull-right">Important</span>
+												<div class="clearfix"></div>
+											</div>								
+										</div>
+									</div>
+									
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 20, 18:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-warning pull-right">Normal</span>
+												<div class="clearfix"></div>
+											</div>								
+										</div>
+									</div>
+								
+									<div class="work-item">
+										<div class="row">
+											<div class="col-md-8 col-sm-8">
+												<div class="checkbox"><input type="checkbox" ></div>
+												<p>Contrary to popular roots in a piece of classical Latin.</p>
+												<!-- Meta information -->
+												<span class="meta"><i class="fa fa-clock-o"></i>&nbsp; Jun 24, 14:23&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;
+													<a href="#"><i class="fa fa-edit"></i></a>
+												</span>
+												<div class="clearfix"></div>
+											</div>		
+											<div class="col-md-4 col-sm-4">
+												<span class="label label-info pull-right">Medium</span>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- UI thirty four end -->
+				
+			
+		<!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<!-- jQuery nice scroll (For smooth scrolling and scrollbar) -->
+		<script src="js/jquery.nicescroll.min.js"></script>
+		<!-- Date Time Picker JS -->
+		<script src="js/bootstrap-datetimepicker.min.js"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="js/respond.min.js"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="js/html5shiv.js"></script>
+		<script>
+			/* Task */
+	
+			$(document).ready(function(){   
+			   $('.work-item input:checkbox').removeAttr('checked').on('click', function(){
+				  if(this.checked){
+					 $(this).parent().next("p").css('text-decoration','line-through');
+				  }
+				  else{
+					 $(this).parent().next("p").css('text-decoration','none');
+				  }
+				});
+				
+				/* Scroll bar JS */
+
+				$(".task-list").niceScroll({
+					cursorcolor:"#555",
+					cursoropacitymin:0,
+					cursoropacitymax:0.3,
+					cursorwidth:5,
+					cursorborder:"0px",
+					cursorborderradius:"10px",
+					cursorminheight:50,
+					zindex:1,
+					mousescrollstep:20
+				});
+			});
+			
+			/* Date Time Picker JS */
+
+			$(function() {
+				$('#datetimepicker1').datetimepicker();
+			});
+
+		</script>
+	</body>	
+</html>
