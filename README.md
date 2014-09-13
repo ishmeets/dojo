@@ -1,2 +1,0 @@
-# dojo
-### a Sails application
