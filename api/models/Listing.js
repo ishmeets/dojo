@@ -12,31 +12,31 @@ module.exports = {
   attributes: {
 
     address: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
 
     city: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
 
     state: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
 
     zip_code: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 10,
       required : true
     },
 
     mls_number: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 15,
       required : true
     },
@@ -51,28 +51,28 @@ module.exports = {
     },
 
     agent_bre_number: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 20,
       required : true
     },
 
     agent_first_name: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255
     },
 
     agent_middle_name: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255
     },
 
     agent_last_name: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255
     },
 
     primary_image_url: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
@@ -81,8 +81,14 @@ module.exports = {
       type: 'FLOAT'
     },
 
+    access_key: {
+      type     : 'string',
+      maxLength: 255,
+      required : true
+    },
+
     status: {
-      type: 'STRING',
+      type: 'string',
       enum: ['active', 'closed']
     }
   }

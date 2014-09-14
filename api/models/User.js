@@ -32,7 +32,7 @@ module.exports = {
       max     : 255,
       required: true
     },
-    middle: {
+    middle_name: {
       type    : 'string',
       max     : 255,
       required: true
@@ -46,7 +46,7 @@ module.exports = {
       type      : 'boolean',
       defaultsTo: false
     },
-    activationToken: {
+    activation_token: {
       type: 'string'
     },
 
@@ -55,7 +55,7 @@ module.exports = {
       required: true
     },
 
-    primary_phone: {
+    cell_phone_number: {
       type: 'string',
       max     : 255,
       required: true

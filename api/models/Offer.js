@@ -12,84 +12,93 @@ module.exports = {
   attributes: {
 
     buyer_user_id: {
-      type     : 'INTEGER',
-      maxLength: 10,
-      required: true,
+      type      : 'integer',
+      maxLength : 10,
       foreignKey: true,
       references: 'user',
-      on: 'id'
+      on        : 'id'
+    },
+
+    buyer_email_address: {
+      type     : 'string',
+      maxLength: 255,
+      required : true
     },
 
     buyer_first_name: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
 
     buyer_middle_name: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
 
     buyer_last_name: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
 
     listing_id: {
-      type : 'INTEGER',
-      maxLength: 10,
-      required: true,
+      type      : 'integer',
+      maxLength : 10,
+      required  : true,
       foreignKey: true,
       references: 'listing',
-      on: 'id'
+      on        : 'id'
     },
 
     offer_price: {
-      type    : 'FLOAT',
+      type    : 'float',
       required: true
     },
 
     earnest_money: {
-      type    : 'FLOAT',
+      type    : 'float',
       required: true
     },
 
     down_payment: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255
     },
 
     financing: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
 
     home_inspection_contingency: {
-      type     : 'INTEGER',
-      maxLength: 10
+      type     : 'integer',
+      maxLength: 10,
+      required : true
     },
 
     loan_contingency: {
-      type     : 'INTEGER',
-      maxLength: 10
+      type     : 'integer',
+      maxLength: 10,
+      required : true
     },
 
     appraisal_contingency: {
-      type     : 'INTEGER',
-      maxLength: 10
+      type     : 'integer',
+      maxLength: 10,
+      required : true
     },
 
     close_of_escrow: {
-      type     : 'INTEGER',
-      maxLength: 10
+      type     : 'integer',
+      maxLength: 10,
+      required : true
     },
 
     offer_file_url: {
-      type     : 'STRING',
+      type     : 'string',
       maxLength: 255,
       required : true
     },
