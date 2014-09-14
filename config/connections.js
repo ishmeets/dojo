@@ -59,7 +59,7 @@ module.exports.connections = {
   someMongodbServer: {
     adapter: 'sails-mongo',
     host: 'localhost',
-    port: 27017,
+    port: 27017
     // user: 'username',
     // password: 'password',
     // database: 'your_mongo_db_name_here'
@@ -74,12 +74,13 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  somePostgresqlServer: {
+  postgres: {
     adapter: 'sails-postgresql',
-    host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
-    user: 'YOUR_POSTGRES_USER',
-    password: 'YOUR_POSTGRES_PASSWORD',
-    database: 'YOUR_POSTGRES_DB'
+    host: 'ec2-54-197-241-91.compute-1.amazonaws.com',
+    user: 'ahyjudvjlpuobl',
+    password: 'KVNEYvoWibB9vJEl3qe1ANvYeH',
+    database: 'd3u67a7miq87cn',
+    ssl: true
   }
 
 
