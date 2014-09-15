@@ -1,0 +1,37 @@
+<div>
+    <div class="modal-header">
+        <h3>Register</h3>
+    </div>
+    <div class="modal-body">
+        <form role="form" action="/user" method="post">
+
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="Email" ng-model="input.email">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="First Name" ng-model="input.firstName">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="Last Name" ng-model="input.lastName">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" placeholder="Password" ng-model="input.password">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="password" placeholder="Confirm Password" ng-model="input.passwordConfirm">
+        </div>
+        <div class="form-group">
+            <label> Register as: </label>
+            <select ng-model="input.userType" ng-init="input.userType = 'realtor'">
+                <option value="realtor" selected> Realtor </option>
+                <option value="consumer"> Consumer </option>
+            </select>
+        </div>
+
+        <a class="btn btn-default btn-primary" ng-click="clickRegisterUser($event)">Register</a>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

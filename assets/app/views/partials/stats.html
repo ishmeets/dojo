@@ -1,0 +1,577 @@
+<div id="stats-report" ng-controller="StatsController">
+
+  <header id="report-header" class="report-header">
+    <div class="row">
+      <h1 class="title-2 report-title col-md-12">
+        Housing Report of <span class="emphasis">{{ city | ucwords | capitalize }}, {{ state | capitalize }}</span>
+      </h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label> Property Type </label>
+        <select class="form-control" ng-model="inputPropertyType" ng-options="item.ID as item.Title for item in propertyTypes"></select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="control-label"> Report Date </label>
+        <span class="add-on"><i class="glyphicon glyphicon-calendar icon-calendar"></i></span>
+        <input hd-daterangepicker class="form-control" placeholder="Date Range" type="text" range-value="inputReportDate">
+      </div>
+    </div>
+  </header>
+
+  <!-- Header when user scrolls down -->
+  <!--
+  <header id="report-header-tiny" class="report-header">
+    <div class="row">
+      <h1 class="title-2 report-title col-md-12"><span class="emphasis">{{ city | ucwords | capitalize }}, {{ state | capitalize }}</span> </h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <select class="form-control" ng-model="inputPropertyType" ng-options="item.ID as item.Title for item in propertyTypes"></select>
+      </div>
+
+      <div class="col-md-4">
+        <input hd-daterangepicker class="form-control" placeholder="Date Range" type="text" range-value="inputReportDate">
+      </div>
+    </div>
+  </header>
+  -->
+  <!-- End header when user scrolls down -->
+
+  <section class="report-overview" ng-cloak>
+    <div class="row">
+      <h2 class="title-2 title-market-overview col-md-12"> From {{ inputReportDate.from }} to {{ inputReportDate.to }} </h2>
+      <br>
+
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <tbody>
+          <tr>
+            <td class="table-label">Number of Sold Properties</td>
+            <td class="table-value">{{ totalSold }}</td>
+          </tr>
+          <tr>
+            <td class="table-label">Number of New Properties</td>
+            <td class="table-value">{{ totalNew }}</td>
+          </tr>
+          <tr>
+            <td class="table-label">Number of Pending Properties</td>
+            <td class="table-value">{{ totalPending }}</td>
+          </tr>
+          <tr>
+            <td class="table-label">Inventory</td>
+            <td class="table-value">{{ totalInventory }}</td>
+          </tr>
+          <tr>
+            <td class="table-label">Average Number of Property Sold / Day</td>
+            <td class="table-value">{{ totalSoldPerDay }}</td>
+          </tr>
+          <tr>
+            <td class="table-label">Cheapest Property Sold</td>
+            <td class="table-value">{{ mostCheapestProperty | address }} <br>
+              Sold for: {{ mostCheapestProperty['sold_price'] | currency }}
+            </td>
+          </tr>
+          <tr>
+            <td class="table-label">Most Expensive Property Sold</td>
+            <td class="table-value">{{ mostExpensiveProperty | address }} <br>
+              Sold for: {{ mostExpensiveProperty['sold_price'] | currency }}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cold-md-6">
+        <div class="col-md-6 box-information box-information-market-type">
+          <span class="field-label">Market Condition</span>
+          <!-- <span class="field-total">{{ total['sold']}}</span> -->
+          <span class="field-value" ng-cloak>
+              <span class="field-percentage text-market-type"> {{ graphData.payload['market_type'] }} </span>
+          </span>
+        </div>
+
+        <div class="col-md-3 box-information">
+          <span class="field-label">Sold</span>
+          <!-- <span class="field-total">{{ total['sold']}}</span> -->
+          <span class="field-value" ng-cloak>
+            <i class="fa fa-angle-up fa-2"
+               ng-show="graphData.payload['total_sold_percentage_difference_first_last'] > 0"></i>
+            <i class="fa fa-angle-down fa-2"
+               ng-show="graphData.payload['total_sold_percentage_difference_first_last'] < 0"></i>
+            <span class="field-percentage"> {{ graphData.payload['total_sold_percentage_difference_first_last'] | percentage }} </span>
+          </span>
+        </div>
+
+        <div class="col-md-3 box-information">
+          <span class="field-label">Average Sales Price</span>
+          <!-- <span class="field-total">{{ total['average_sales_price']}}</span> -->
+          <span class="field-value">
+            <i class="fa fa-angle-up fa-2"
+               ng-show="graphData.payload['average_sales_price_percentage_difference_first_last'] > 0"></i>
+            <i class="fa fa-angle-down fa-2"
+               ng-show="graphData.payload['average_sales_price_percentage_difference_first_last'] < 0"></i>
+            <span class="field-percentage"> {{ graphData.payload['average_sales_price_percentage_difference_first_last'] | percentage }} </span>
+          </span>
+        </div>
+
+        <div class="col-md-3 box-information">
+          <span class="field-label">Price per Sqft</span>
+          <!-- <span class="field-total">{{ total['average_sales_price']}}</span> -->
+          <span class="field-value">
+            <i class="fa fa-angle-up fa-2"
+               ng-show="graphData.payload['sold_price_per_sqft_percentage_difference_first_last'] > 0"></i>
+            <i class="fa fa-angle-down fa-2"
+               ng-show="graphData.payload['sold_price_per_sqft_percentage_difference_first_last'] < 0"></i>
+            <span class="field-percentage"> {{ graphData.payload['sold_price_per_sqft_percentage_difference_first_last'] | percentage }} </span>
+          </span>
+        </div>
+
+        <div class="col-md-3 box-information">
+          <span class="field-label">Days on Market</span>
+          <!-- <span class="field-total">{{ total['days_on_market']}}</span> -->
+          <span class="field-value">
+            <i class="fa fa-angle-up fa-2"
+               ng-show="graphData.payload['average_dom_percentage_difference_first_last'] > 0"></i>
+            <i class="fa fa-angle-down fa-2"
+               ng-show="graphData.payload['average_dom_percentage_difference_first_last'] < 0"></i>
+            <span class="field-percentage"
+                  ng-class="{'text-angle-up': graphData.payload['average_dom_percentage_difference_first_last'] > 0}"> {{ graphData.payload['average_dom_percentage_difference_first_last'] | percentage}}</span>
+          </span>
+        </div>
+
+        <div class="col-md-3 box-information">
+          <span class="field-label">New</span>
+          <!-- <span class="field-total">{{ total['days_on_market']}}</span> -->
+          <span class="field-value">
+            <i class="fa fa-angle-up fa-2"
+               ng-show="graphData.payload['total_new_percentage_difference_first_last'] > 0"></i>
+            <i class="fa fa-angle-down fa-2"
+               ng-show="graphData.payload['total_new_percentage_difference_first_last'] < 0"></i>
+            <span class="field-percentage"
+                  ng-class="{'text-angle-up': graphData.payload['total_new_percentage_difference_first_last'] > 0}"> {{ graphData.payload['total_new_percentage_difference_first_last'] | percentage}}</span>
+          </span>
+        </div>
+
+        <div class="col-md-3 box-information">
+          <span class="field-label">Inventory</span>
+          <!-- <span class="field-total">{{ total['days_on_market']}}</span> -->
+          <span class="field-value">
+              <i class="fa fa-angle-up fa-2"
+                 ng-show="graphData.payload['inventory_percentage_difference_first_last'] > 0"></i>
+              <i class="fa fa-angle-down fa-2"
+                 ng-show="graphData.payload['inventory_percentage_difference_first_last'] < 0"></i>
+              <span class="field-percentage"
+                    ng-class="{'text-angle-up': graphData.payload['inventory_percentage_difference_first_last'] > 0}"> {{ graphData.payload['inventory_percentage_difference_first_last'] | percentage}}</span>
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row market-overview">
+      <h2 class="title-2 title-market-overview col-md-12"> Market Overview </h2>
+
+      <div class="text-market-overview col-md-12">
+        <!-- market overview -->
+        <p>From {{ inputReportDate.from }} to {{ inputReportDate.to }} (past {{ dateRangeMonthsDiff }} Months), the
+          average sales price of {{ inputPropertyType }} property in {{ city | ucwords }}
+          <span ng-bind-html="graphData.payload['average_sales_price_percentage_difference_first_last'] | changeIndicator: '': '%'"></span>.
+        </p>
+
+        <p>The price / sqft of {{ inputPropertyType }} in {{ city | ucwords }}
+          <span ng-bind-html="graphData.payload['sold_price_per_sqft_percentage_difference_first_last'] | changeIndicator: '': '%'"></span>.
+          On average, it took {{ averageDom }} days to sell a {{ inputPropertyType }} property, which
+          <span ng-bind-html="graphData.payload['average_dom_percentage_difference_first_last'] | changeIndicator: '': '%'"></span>
+        </p>
+
+        <p>Currently, there are {{ totalInventory }} {{ inputPropertyType }} properties are for sales, {{ thisMonthTotalPending }} went pending in this month.</p>
+
+        <p>During this period, the cheapest property that is sold is {{ mostCheapestProperty | address }} for {{
+          mostCheapestProperty['sold_price'] | currency }} and the most expensive property sold is {{
+          mostExpensiveProperty | address }} for {{ mostExpensiveProperty['sold_price'] | currency }}.</p>
+
+        <p>According to our market analysis, the market is {{ marketType }}.</p>
+      </div>
+    </div>
+  </section>
+
+  <br>
+  <br>
+
+  <section class="stats-report">
+
+      <!-- Graph Of Average Sales Price -->
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="average_sales_price"
+           graph-title='{{ inputPropertyType }} Average Sales Price'
+           graph-data="graphData.payload['average_sales_price']"
+           trend-line-data="graphData.payload['average_sales_price_trend_line']"
+
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Price"
+           y-axis-prefix="$"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Average Sales Price', 'mData': 'value' }
+                           ]"
+           table-data="tableData.average_sales_price"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+      </div>
+
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="sold_price_per_sqft"
+           graph-title='{{ inputPropertyType }} Average Sales Price per Sqft'
+           graph-data="graphData.payload['sold_price_per_sqft']"
+           trend-line-data="graphData.payload['sold_price_per_sqft_trend_line']"
+
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Price"
+           y-axis-prefix="$"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Average Sales Price per Sqft', 'mData': 'value' }
+                           ]"
+           table-data="tableData.sold_price_per_sqft"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+      </div>
+
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="average_dom"
+           graph-title='{{ inputPropertyType }} Average Days on Market'
+           graph-data="graphData.payload['average_dom']"
+           trend-line-data="graphData.payload['average_dom_trend_line']"
+
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Days"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Average Days on Market', 'mData': 'value' }
+                           ]"
+           table-data="tableData.average_dom"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+      </div>
+
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="sold_price_per_sqft"
+           graph-title='{{ inputPropertyType }} Average Sales Price per Sqft'
+           graph-data="graphData.payload['sold_price_per_sqft']"
+           trend-line-data="graphData.payload['sold_price_per_sqft_trend_line']"
+
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Price"
+           y-axis-prefix="$"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Average Sales Price per Sqft', 'mData': 'value' }
+                           ]"
+           table-data="tableData.sold_price_per_sqft"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+      </div>
+
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="average_dom"
+           graph-title='{{ inputPropertyType }} Total Number Sold Properties'
+           graph-data="graphData.payload['total_sold']"
+           trend-line-data="graphData.payload['total_sold_trend_line']"
+
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Days"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Total Number of Sold Properties', 'mData': 'value' }
+                           ]"
+           table-data="tableData.total_sold"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+      </div>
+
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="average_dom"
+           graph-title='{{ inputPropertyType }} Total Number New Properties'
+           graph-data="graphData.payload['total_new']"
+           trend-line-data="graphData.payload['total_new_trend_line']"
+
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Days"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Total Number of New Properties', 'mData': 'value' }
+                           ]"
+           table-data="tableData.total_new"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+      </div>
+
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="average_dom"
+           graph-title='{{ inputPropertyType }} Total Number Pending Properties'
+           graph-data="graphData.payload['total_pending']"
+           trend-line-data="graphData.payload['total_pending_trend_line']"
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Days"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Total Number of Pending Properties', 'mData': 'value' }
+                           ]"
+           table-data="tableData.total_pending"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+      </div>
+
+      <div hd-amcharts
+           city="city"
+           state="state"
+           country="country"
+           property-type="inputPropertyType"
+           graph-output="average_dom"
+           graph-title='{{ inputPropertyType }} Total Number Inventory'
+           graph-data="graphData.payload['inventory']"
+           trend-line-data="graphData.payload['inventory_trend_line']"
+           am-trend-line="{
+                              'dashLength': 1,
+                              'lineColor': '#AA9900',
+                              'lineThickness': 2
+                           }"
+           type="line"
+           height="450px"
+           x-axis="Date"
+           y-axis="Days"
+           show-widget-code="true"
+
+           show-table="true"
+           table-headers="[
+                              { 'sTitle':'Date', 'mData': 'date' },
+                              { 'sTitle':'Total Number of Inventory', 'mData': 'value' }
+                           ]"
+           table-data="tableData.inventory"
+           table-settings="{
+                              'bFilter': false,
+                              'bInfo': false,
+                              'bLengthChange': false,
+                              'bAutoWidth': false,
+                              'useFloater': false,
+                              'oTableTools': {
+                                  'sRowSelect': 'single'
+                              }
+                           }"
+          >
+
+      <h2 class="title-4"> About {{ city | ucwords }} </h2>
+
+      <!-- load for city information -->
+      <div id="content-about">
+        <!--<div ng-include="" src="/js/views/partials/city_information/{{ city }}.html"></div>-->
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+<!-- Template for Amchart Graph -->
+<script type='text/ng-template' id='amchartTemplate.html'>
+  <div class="graph">
+    <div class="row">
+      <div class="col-md-10">
+        <h2 class="title-3"> {{ graphTitle }} </h2>
+      </div>
+
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-widget" ng-click="getWidget()" ng-if="showWidgetCode"><i
+            class="fa fa-external-link-square"></i> Widget
+        </button>
+        <div class="widget-code-box" ng-show="showWidgetCodeBox">
+          <p>Copy and paste the following code to your page</p>
+          <textarea>{{ widgetCodeText }}</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ textDescription }}
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 graph-box">
+        <div id="{{ chartId }}" style="width: {{ width }}; height: {{ height }}"></div>
+      </div>
+      <div class="col-md-4">
+        <table angular-data-table headers="tableHeaders"
+               data="tableData"
+               settings="tableSettings" class="table table-hover table-striped table-graph-data">
+        </table>
+      </div>
+    </div>
+  </div>
+</script>
+

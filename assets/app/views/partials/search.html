@@ -1,0 +1,153 @@
+<div ng-controller="SearchController">
+
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-9">
+      <h2>{{ v.pageTitle }}</h2>
+    </div>
+
+    <div class="view-switcher">
+      <button ng-click="v.viewType = 'LIST'"> List</button>
+      <button ng-click="v.viewType = 'MAP'"> Map</button>
+    </div>
+  </div>
+
+  <div class="wrapper wrapper-content">
+    <section class="search-property container-fluid">
+      <div ng-if="v.viewType === 'LIST'" class="row" id="view-list" ng-controller="PropertyListViewCtrl">
+        <div class="col-md-7">
+          <div id="property-{{ property.id }}" class="property-item" ng-repeat="property in v.filteredData"
+               ng-click="clickPropertyItem($event, property.id)"
+               ng-class="{ 'active' : property.id === v.listViewPropertyId }"
+               anchor-smooth-scroll="property-{{ property.id }}">
+            <h4> {{ property.address_number }} {{ property.address_street }} {{ property.city }} {{ property.state }} {{
+              property.zip }} </h4>
+
+            <div class="property-summary" ng-if="v.listViewProperty = property.id">
+              <dl>
+                <dt> Listing Price:</dt>
+                <dd> {{ property.asking_price | currency : '$' }}</dd>
+
+                <dt> Beds</dt>
+                <dd> {{ property.beds }}</dd>
+
+                <dt> Baths</dt>
+                <dd> {{ property.baths }}</dd>
+
+                <dt> Sqft</dt>
+                <dd> {{ property.sq_ft }}</dd>
+
+                <dt> Status</dt>
+                <dd> {{ property.status }}</dd>
+
+                <dt> Lot Size</dt>
+                <dd> {{ property.lot_size }}</dd>
+
+                <dt> MLS #</dt>
+                <dd> {{ property.mls_number }}</dd>
+
+                <dt> Price / Sqft</dt>
+                <dd> {{ property.price_per_sqft }}</dd>
+              </dl>
+            </div>
+          </div>
+
+          <pagination total-items="v.totalItems" page="v.currentPage"></pagination>
+        </div>
+
+        <div class="col-md-5">
+          <div id="photo-slideshow" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#photo-slideshow" ng-repeat="(key, photo) in v.propertyPhotos" data-slide-to="{{ key }}"
+                  ng-class="{ active: key === 0 }"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div ng-repeat="(key, photo) in v.propertyPhotos" class="item" ng-class="{ active: key === 0 }">
+                <img src="{{ photo.path }}" alt="{{ photo.description }}">
+
+                <div class="carousel-caption">
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#photo-slideshow" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#photo-slideshow" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+
+          <br><br>
+
+          <div id="map-list" class="map-container" style="height: 600px; width: 400px"></div>
+        </div>
+      </div>
+
+      <div ng-if="v.viewType === 'MAP'" class="row" id="view-map">
+        <div class="col-md-7">
+          <!-- placeholder for map -->
+          <div id="map" class="map-container"></div>
+        </div>
+        <div class="col-md-5">
+          <!-- place holder for panoramic view -->
+          <div id="panoramic-view" style="width: 100%; height: 400px"></div>
+          <div class="property-info">
+            <dl>
+              <dt> Listing Price:</dt>
+              <dd> {{ property.asking_price | currency : '$' }}</dd>
+
+              <dt> Beds</dt>
+              <dd> {{ property.beds }}</dd>
+
+              <dt> Baths</dt>
+              <dd> {{ property.baths }}</dd>
+
+              <dt> Sqft</dt>
+              <dd> {{ property.sq_ft }}</dd>
+
+              <dt> Status</dt>
+              <dd> {{ property.status }}</dd>
+
+              <dt> Lot Size</dt>
+              <dd> {{ property.lot_size }}</dd>
+
+              <dt> MLS #</dt>
+              <dd> {{ property.mls_number }}</dd>
+
+              <dt> Price / Sqft</dt>
+              <dd> {{ property.price_per_sqft }}</dd>
+            </dl>
+          </div>
+
+          <div id="chatRoom">
+            <ul>
+              <li ng-repeat="realtor in listOfRealtors"> {{ realtor.first_name }} {{ realtor.last_name }}
+                <button class="btn btn-primary btn-chat" ng-click="clickStartChat($event, realtor.id)"> Chat</button>
+              </li>
+            </ul>
+          </div>
+
+          <div id="chatBox">
+            <ul>
+              <li ng-repeat="(user, message) in listOfMessages"> {{ user }}: {{ message }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="text/ng-template" id="templatePropertyDetails.html">
+  <div class="property-details">
+    <ul>
+      <li ng-repeat="(fieldName, fieldValue) in v.propertyDetails">
+        <span class="fieldName"> {{ fieldName }} </span> {{ fieldValue }}
+      </li>
+    </ul>
+  </div>
+</script>
